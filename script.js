@@ -12,57 +12,83 @@ function initiate() {
    if (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors'){
        initiate();
    }
-   console.log(play(playerSelection,computerPlay()));
+   return play(playerSelection,computerPlay());
 }
 
 function play(playerSelection, computerSelection) {
 
-    let win = `You Win! ${playerSelection} beats ${computerSelection}`;
-    let lose = `You Lose! ${computerSelection} beats ${playerSelection}`;
-    let draw = `It's a draw!`;
+    let win = `You won this round! ${playerSelection} beats ${computerSelection}`;
+    let lose = `You lost this round! ${computerSelection} beats ${playerSelection}`;
+    let draw = `There was a draw!`;
 
     if (playerSelection == 'rock') {
         if (computerSelection == 'scissors') {
-            return win;
+            console.log(win);
+            return 1;
         }
         if (computerSelection == 'paper') {
-            return lose;
+            console.log(lose);
+            return -1;
         }
         else{
-            return draw;
+            console.log(draw);
+            return 0;
         }
     } 
     if (playerSelection == 'paper') {
         if (computerSelection == 'rock') {
-            return win;
+            console.log(win);
+            return 1;
         }
         if (computerSelection == 'scissors') {
-            return lose;
+            console.log(lose);
+            return -1;
         }
         else{
-            return draw;
+            console.log(draw);
+            return 0;
         }
     }
     if (playerSelection == 'scissors') {
         if (computerSelection == 'paper') {
-            return win;
+            console.log(win);
+            return 1;
         }
         if (computerSelection == 'rock') {
-            return lose;
+            console.log(lose);
+            return -1;
         }
         else{
-            return draw;
+            console.log(draw);
+            return 0;
         }
     }
 }
 
-function game(numRounds) {
+function game() {
     
     let playerScore = 0;
     let computerScore = 0;
 
-    for (let i = 0; i < numRounds; i++){
-        initiate();
+    for (let i = 0; i < 5; i++){
+        let point = initiate();
+        if (point == 1){
+            playerScore += 1;
+        }
+        if (point == -1){
+            computerScore += 1;
+        }
+        console.log(`You: ${playerScore} \t Comp: ${computerScore}`);
     }
-
+    if(playerScore > computerScore){
+        return 'You won the game!';
+    }
+    if(computerScore > playerScore){
+        return 'You lost the game!';
+    }
+    else {
+        return "It's a Draw!";
+    }
 }
+
+console.log(game());
