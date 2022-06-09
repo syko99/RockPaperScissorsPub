@@ -5,25 +5,34 @@
         <meta name="viewport" width="device-width, initial-scale=1.0">
         <title>Rock Paper Scissors</title>
         <!-- Style & Script -->
-        <script src="" defer></script>
+        <script src="script.js" defer></script>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <header>
             <h1>Rock Paper Scissors</h1>
             <h2>You vs. The Computer</h2>
+            <h2 id="msg"></h2>
         </header>
         <main>
             <div id="game__card">
+                <h2 id="round">Round: 1</h2>
                 <div id="computer">
                     <div id="hand__comp">
                         <span id="hand__comp-emoji">🖥️</span>
                     </div>
                 </div>
                 <div id="hand__user">
-                    <div class="hands">✊</div>
-                    <div class="hands">🖐️</div>
-                    <div class="hands">✌️</div>
+                    <button id="rock" class="hands handhover">✊</button>
+                    <button id="paper" class="hands handhover">🖐️</button>
+                    <button id="scissors" class="hands handhover">✌️</button>
+                </div>
+                <button id="reset">Reset</button>
+            </div>
+            <div id="scoreboard">
+                <div id="scores">
+                    <span id="score__user">You: 0</span>
+                    <span id="score__comp">Computer: 0</span>
                 </div>
             </div>
         </main>

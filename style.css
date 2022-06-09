@@ -16,6 +16,10 @@ header h1{
     font-size: 3rem;
     font-weight: 800;
 }
+#msg{
+    height: 0;
+    font-size: 3rem;
+}
 #game__card{
     width: 35rem;
     height: 30rem;
@@ -26,6 +30,8 @@ header h1{
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 1rem;
+    font-family: sans-serif;
 }
 #computer{
     width: 100%;
@@ -70,16 +76,62 @@ header h1{
 }
 .hands{
     box-shadow:0 0 8px 2px rgba(0, 0, 0, 0.308);
+    background-color: rgb(175, 175, 175);
     width: 7rem;
     height: 5rem;
     display: grid;
     place-items: center;
     font-size: 3rem;
+    border: none;
     border-radius: 5px;
-    cursor: pointer;
+    user-select: none;
 }
-.hands:hover{
+.handhover:hover{
+    cursor: pointer;
     box-shadow: inset 0 0 20rem 20rem rgba(207, 207, 207, 0.363),
     0 0 1rem 1px rgba(0, 0, 0, 0.158);
     transform: translateY(-2px);
+}
+#reset{
+    border: none;
+    font-family: sans-serif;
+    box-shadow:0 0 8px 2px rgba(0, 0, 0, 0.308);
+    cursor: pointer;
+    background-color: rgba(255, 0, 0, 0.164);
+}
+#scoreboard{
+    color: white;
+    font-family: sans-serif;
+    padding: 1rem;
+    display: grid;
+    place-items: center;
+}
+#scores{
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+@keyframes greenText {
+    0%{
+        color: white;
+    }
+    50%{
+        color: rgb(67, 216, 74);
+    }
+    100%{
+        color: white;
+    }
+}
+@keyframes redText {
+    0%{
+        color: white;
+    }
+    50%{
+        color: rgb(216, 51, 51);
+    }
+    100%{
+        color: white;
+    }
 }
