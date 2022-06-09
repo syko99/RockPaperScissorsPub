@@ -3,26 +3,14 @@ body{
     margin: 0;
     height: 100vh;
     width: 100%;
-    background: linear-gradient(45deg, rgba(0, 255, 200, 0.616), pink);
-    background-size: 400%;
-    animation: background-shift 10s ease 0s infinite;
+    background-color: rgb(20,22,28);
     display: grid;
     place-items: center;
-}
-@keyframes background-shift {
-	0% {
-		background-position: 50% 50%;
-	}
-	50% {
-		background-position: 100% 0%;
-	}
-	100% {
-		background-position: 50% 50%;
-	}
 }
 header{
     font-family: sans-serif;
     text-align: center;
+    color: white;
 }
 header h1{
     font-size: 3rem;
@@ -48,25 +36,25 @@ header h1{
 #hand__comp{
     width: 20rem;
     height: 15rem;
-    box-shadow: inset 0 0 20rem 20rem rgba(194, 194, 194, 0.363),
-    0 0 1rem 1px rgba(0, 0, 0, 0.158);
+    box-shadow: inset 0 0 12px 1px rgba(92, 92, 92, 0.555);
+    background-color: rgb(155, 155, 155);
     border-radius: 5px;
     font-size: 6rem;
     display: grid;
     place-items: center;
 }
 #hand__comp-emoji{
-    animation: floating 1s ease-in-out 0s infinite;
+    animation: floating 1.5s ease-in-out 0s infinite;
 }
 @keyframes floating {
     0%{
         transform: translateY(0px);
     }
     25%{
-        transform: translateY(-3px);
+        transform: translateY(-2px);
     }
     75%{
-        transform: translateY(3px);
+        transform: translateY(2px);
     }
     100%{
         transform: translateY(0px);
@@ -81,12 +69,17 @@ header h1{
     align-items: center;
 }
 .hands{
-    box-shadow: inset 0 0 20rem 20rem rgba(194, 194, 194, 0.363),
-    0 0 1rem 1px rgba(0, 0, 0, 0.158);
-    width: 5rem;
+    box-shadow:0 0 8px 2px rgba(0, 0, 0, 0.308);
+    width: 7rem;
     height: 5rem;
     display: grid;
     place-items: center;
     font-size: 3rem;
     border-radius: 5px;
+    cursor: pointer;
+}
+.hands:hover{
+    box-shadow: inset 0 0 20rem 20rem rgba(207, 207, 207, 0.363),
+    0 0 1rem 1px rgba(0, 0, 0, 0.158);
+    transform: translateY(-2px);
 }
