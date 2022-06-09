@@ -19,33 +19,23 @@ let message = document.querySelector("#msg");
 let computerEmoji = document.querySelector("#hand__comp-emoji");
 let roundText = document.querySelector("#round");
 
+//giving each button click function
+buttons.forEach((btn) =>{
+    btn.addEventListener("click", function(e){
+        play(this.id, computerPlay());
+        round++;
+        roundText.textContent = `Round: ${round}`;
+        //edit this number(below) to set number of rounds, make sure to adjust game messages!
+        if(round >= 5){
+            displayWinner();
+            disableButtons();
+        }
+    })
+});
 
-rockBtn.addEventListener("click", function(e){
-    play(this.id, computerPlay());
-    round++;
-    if(round >= 5){
-        displayWinner();
-        disableButtons();
-    }
-});
-paperBtn.addEventListener("click", function(e){
-    play(this.id, computerPlay());
-    round++;
-    if(round >= 5){
-        displayWinner();
-        disableButtons();
-    }
-});
-scissorsBtn.addEventListener("click", function(e){
-    play(this.id, computerPlay());
-    round++;
-    if(round >= 5){
-        displayWinner();
-        disableButtons();
-    }
-});
+// reset button
 reset.addEventListener("click", ()=>{
-    round = 0;
+    round = 1;
     userScore = 0;
     compScore = 0;
     userScoreText.textContent = `You: ${userScore}`
@@ -69,30 +59,18 @@ function computerPlay() {
     return computerSelection;
 }
 
-//prompts for user input and uses for player's hand in play function
-function initiate() {
-   let playerSelection = prompt("Choose Rock, Paper, or Scissors: ");
-   playerSelection = playerSelection.toLowerCase();
-   if (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors'){
-       initiate();
-   }
-   return play(playerSelection,computerPlay());
-}
-
-//compares user hand to computer hand and returns winner and score value.
+//compares user hand to computer hand adjusts scores.
 function play(playerSelection, computerSelection) {
-    userScoreText.style.animation = "none";
-    compScoreText.style.animation = "none";
+    setTimeout(()=>{
+        userScoreText.style.animation = "none";
+        compScoreText.style.animation = "none";
+    },250);
     if (playerSelection == 'rock') {
         if (computerSelection == 'scissors') {
             userPoint();
         }
         if (computerSelection == 'paper') {
             compPoint();
-        }
-        else{
-            roundText.textContent = `Round: ${round}`;
-            return;
         }
     } 
     if (playerSelection == 'paper') {
@@ -102,10 +80,6 @@ function play(playerSelection, computerSelection) {
         if (computerSelection == 'scissors') {
             compPoint();
         }
-        else{
-            roundText.textContent = `Round: ${round}`;
-            return;
-        }
     }
     if (playerSelection == 'scissors') {
         if (computerSelection == 'paper') {
@@ -114,24 +88,25 @@ function play(playerSelection, computerSelection) {
         if (computerSelection == 'rock') {
             compPoint();
         }
-        else{
-            roundText.textContent = `Round: ${round}`;
-            return;
-        }
     }
 }
+
+// adds point for user
 function userPoint(){
     userScore += 1;
     userScoreText.style.animation = "greenText 250ms forwards";
     userScoreText.textContent = `You: ${userScore}`;
     roundText.textContent = `Round: ${round}`;
 }
+
+// adds point for computer
 function compPoint(){
     compScore += 1;
     compScoreText.style.animation = "redText 250ms forwards";
     compScoreText.textContent = `Computer: ${compScore}`;
     roundText.textContent = `Round: ${round}`;
 }
+
 function displayWinner(){
     if (userScore > compScore){
         message.textContent = "You Won!"
@@ -143,6 +118,7 @@ function displayWinner(){
     }
 }
 
+//disabled buttons when game is over
 function disableButtons(){
     rockBtn.disabled = true;
     paperBtn.disabled = true;
@@ -151,6 +127,8 @@ function disableButtons(){
         hand.classList.remove("handhover");
     });
 }
+
+//enables buttons upon reset
 function enableButtons(){
     rockBtn.disabled = false;
     paperBtn.disabled = false;
